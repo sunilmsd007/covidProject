@@ -71,10 +71,85 @@ export const getAllData = async () => {
   // ]);
 
   //pipeline optimization ( the two $match stages can coalesce into a single $match combining the conditions with an $and)
+  // const data = await Vaccination.aggregate([
+  //   { $match: { State: "Assam" } },
+  //   { $project: { "Updated On": 1, State: 1, Sites: 1, "First Dose Administered": 1, "Second Dose Administered": 1 } },
+  //   { $match: { "Updated On": new Date("2021-02-01") } }
+  // ]);
+
+  //$addFields (Adds new fields to documents. $addFields outputs documents that contain all existing fields from the input documents and newly added fields.)
+  //note: $addFields overwrites the field if the new field name already exists in the document, including _id.
+  // const data = await Vaccination.aggregate([
+  //   {
+  //     $addFields: {
+  //       "Male+Female": { $add: ["$Male (Doses Administered)", "$Female (Doses Administered)"] }
+  //     }
+  //   },
+  //   { $project: { State: 1, Sites: 1, "Male+Female": 1, "Total Doses Administered": 1 } },
+  //   {
+  //     $match: {
+  //       State: "Assam",
+  //       Sites: { $gt: 20, $lt: 100 }
+  //     }
+  //   },
+  //   { $sort: { Sites: 1 } }
+  // ]);
+
+  //$lookup (Performs a left outer join to collections in same database and adds a new array field to each input document.The new array field contains the matching documents from the "joined" collection. )
+  // const data = await Vaccination.aggregate([
+  //   {
+  //     $lookup:
+  //     {
+  //       from: "statewiseTestingDetails",
+  //       localField: "State",
+  //       foreignField: "State",
+  //       as: "state_docs"
+  //     }
+  //   },
+  //   { $match: {State: "Assam"}}
+  // ]);
+
+  //$unwind(Deconstructs an array field from the input documents to output a document for each element.)
+  // const data = await Vaccination.aggregate([
+  //   {
+  //     $lookup:
+  //     {
+  //       from: "statewiseTestingDetails",
+  //       localField: "State",
+  //       foreignField: "State",
+  //       as: "state_docs"
+  //     }
+  //   },
+  //   { $match: { State: "Goa" } },
+  //   { $unwind: { path: "$state_docs", preserveNullAndEmptyArrays: false } }
+  // ]);
+
+  //$redact (Restricts the contents of the documents based on information stored in the documents themselves)
+  /**
+   * $DESCEND: returns the fields at the current document level, excluding embedded documents.
+   * $$PRUNE: excludes all fields at this current document/embedded document level.
+   * $$KEEP: returns or keeps all fields at this current document/embedded document level.
+   */
   const data = await Vaccination.aggregate([
-    { $match: { State: "Assam" } },
-    { $project: { "Updated On": 1, State: 1, Sites: 1, "First Dose Administered": 1, "Second Dose Administered": 1 } },
-    { $match: { "Updated On": new Date("2021-02-01") } }
+    {
+      $lookup:
+      {
+        from: "statewiseTestingDetails",
+        localField: "State",
+        foreignField: "State",
+        as: "state_docs"
+      }
+    },
+    { $match: { State: "Goa" } },
+    {
+      $redact: {
+        $cond: {
+          if: { $eq: ["$Updated On", new Date("2021-02-01")] },
+          then: "$$DESCEND",
+          else: "$$PRUNE"
+        }
+      }
+    }
   ]);
 
   if (data.length != 0) {
