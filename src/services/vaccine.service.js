@@ -130,30 +130,52 @@ export const getAllData = async () => {
    * $$PRUNE: excludes all fields at this current document/embedded document level.
    * $$KEEP: returns or keeps all fields at this current document/embedded document level.
    */
-  const data = await Vaccination.aggregate([
-    {
-      $lookup:
-      {
-        from: "statewiseTestingDetails",
-        localField: "State",
-        foreignField: "State",
-        as: "state_docs"
-      }
-    },
-    { $match: { State: "Goa" } },
-    {
-      $redact: {
-        $cond: {
-          if: { $eq: ["$Updated On", new Date("2021-02-01")] },
-          then: "$$DESCEND",
-          else: "$$PRUNE"
-        }
-      }
-    }
+  // const data = await Vaccination.aggregate([
+  //   {
+  //     $lookup:
+  //     {
+  //       from: "statewiseTestingDetails",
+  //       localField: "State",
+  //       foreignField: "State",
+  //       as: "state_docs"
+  //     }
+  //   },
+  //   { $match: { State: "Goa" } },
+  //   {
+  //     $redact: {
+  //       $cond: {
+  //         if: { $eq: ["$Updated On", new Date("2021-02-01")] },
+  //         then: "$$DESCEND",
+  //         else: "$$PRUNE"
+  //       }
+  //     }
+  //   }
+  // ]);
+
+  //$unionWith (Performs a union of two collections, combines pipeline results from two collections into a single result set.)
+  // const data = await Vaccination.aggregate([
+  //   { $project: { State: 1, "Updated On": 1 } },
+  //   { $unionWith: { coll: "statewiseTestingDetails", pipeline: [{ $project: { TotalSamples: 1 } }] } },
+  // ]);
+
+  //$unset (Removes/excludes fields from documents.)
+  // const data = await Vaccination.aggregate([
+  //   { $unset: [ "AEFI" , "Updated On"] }   
+  // ]);
+
+  //$sortByCount (computes the count of documents in each distinct group)
+  // const data = await Vaccination.aggregate([
+  //    { $sortByCount: "$State" }    
+  //  ]);
+
+  //$out (Takes the documents returned by the aggregation pipeline and writes them to a specified collection)
+   const data = await Vaccination.aggregate([
+    { $group: { _id: "$State", totalDosage: { $sum: "$Total Doses Administered" } } },
+    { $sort: { _id: 1 } },
+    { $out: { db: "covidVaccination", coll: "totalDosageInStates" } }
   ]);
 
   if (data.length != 0) {
-    console.log(data)
     return data;
   } else {
     throw new Error('No data available');
