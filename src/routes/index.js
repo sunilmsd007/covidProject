@@ -3,6 +3,7 @@ const router = express.Router();
 
 import vaccineRoute from './vaccine.route';
 import vaccineTestRoute from './vaccineTesting.route';
+import covid19Route from './covid19India.route';
 
 /**
  * Function contains Application routes
@@ -15,6 +16,7 @@ const routes = () => {
   });
   router.use('/vaccineStatewise', vaccineRoute);
   router.use('/vaccineTest', vaccineTestRoute);
+  router.use('/covid19', covid19Route);
 
   return router;
 };
