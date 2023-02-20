@@ -160,7 +160,7 @@ export const getAllData = async () => {
 
   //$unset (Removes/excludes fields from documents.)
   // const data = await Vaccination.aggregate([
-  //   { $unset: [ "AEFI" , "Updated On"] }   
+  //   { $unset: [ "AEFI" , "Updated On"] }
   // ]);
 
   //$sortByCount (computes the count of documents in each distinct group)
@@ -169,7 +169,7 @@ export const getAllData = async () => {
   //  ]);
 
   //$out (Takes the documents returned by the aggregation pipeline and writes them to a specified collection)
-   const data = await Vaccination.aggregate([
+  const data = await Vaccination.aggregate([
     { $group: { _id: "$State", totalDosage: { $sum: "$Total Doses Administered" } } },
     { $sort: { _id: 1 } },
     { $out: { db: "covidVaccination", coll: "totalDosageInStates" } }
