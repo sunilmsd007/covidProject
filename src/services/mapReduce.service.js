@@ -1,4 +1,6 @@
 import mapReduce from "../models/mapReduce.model";
+import Orders from "../models/orders.model";
+import Vaccination from '../models/vaccine.model';
 
 //map
 export const map = async () => {
@@ -45,6 +47,31 @@ export const reduce = async () => {
             }
         }
     ])
+    if (data !== null) {
+        return data;
+    } else {
+        throw new Error("No Data Available");
+    }
+}
+
+//mapReduce
+export const mapReduceChek = async () => {
+    var mapFunction = function () {
+        emit(this.State, this.Sites);
+    };
+
+    var reduceFunction = function (key, total) {
+        return Array.sum(total);
+    };
+
+    const data = await Vaccination.mapReduce(
+        mapFunction,
+        reduceFunction,
+        {
+            out: "map_reduce_example"
+        }
+    )
+
     if (data !== null) {
         return data;
     } else {
