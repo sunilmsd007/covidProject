@@ -1,5 +1,4 @@
 import mapReduce from "../models/mapReduce.model";
-import Orders from "../models/orders.model";
 import Vaccination from '../models/vaccine.model';
 
 //map
@@ -78,3 +77,43 @@ export const mapReduceChek = async () => {
         throw new Error("No Data Available");
     }
 }
+
+//
+export const getmapReduce = async () => {
+    const data = await Vaccination.aggregate(
+        [
+            {
+                $group: {
+                    _id: "$State",
+                    "SessionsArr": { $push: "$Sessions" }
+                }
+            },
+            {
+                $project: {
+                    "mapped": {
+                        $map: {
+                            input: "$SessionsArr",
+                            as: "value",
+                            in: { $multiply: ["$$value", 2] }
+                        }
+                    },
+                    "reduced": {
+                        $reduce: {
+                            input: "$SessionsArr",
+                            initialValue: 0,
+                            in: { $add: ["$$value", "$$this"] }
+                        }
+                    }
+                }
+            },
+            {
+                $sort: { _id: 1 }
+            }
+        ]
+    );
+    if (data != null) {
+        return data;
+    } else {
+        throw new Error('No data available');
+    }
+};

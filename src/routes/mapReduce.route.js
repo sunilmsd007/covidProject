@@ -9,4 +9,6 @@ router.get('/reduce',mapReduceController.reduce);
 
 router.get('/mapReduce',mapReduceController.mapReduceCheck);
 
+router.get('/getmapReduce',mapReduceController.getmapReduce);
+
 export default router;
