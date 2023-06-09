@@ -53,7 +53,7 @@ export const reduce = async () => {
     }
 }
 
-//mapReduce
+//mapReduceCheck
 export const mapReduceChek = async () => {
     var mapFunction = function () {
         emit(this.State, this.Sites);
