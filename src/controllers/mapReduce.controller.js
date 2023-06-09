@@ -1,6 +1,6 @@
 import * as mapReduceService from "../services/mapReduce.service";
 import HttpStatus from 'http-status-codes';
-import logger from '../config/logger';
+//import logger from '../config/logger';
 
 /**
  * Controller to implement map and reduce

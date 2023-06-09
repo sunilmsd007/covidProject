@@ -12,7 +12,7 @@ import {
   genericErrorHandler,
   notFound
 } from './middlewares/error.middleware';
-import logger, { logStream } from './config/logger';
+//import logger, { logStream } from './config/logger';
 
 import morgan from 'morgan';
 

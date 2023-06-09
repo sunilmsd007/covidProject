@@ -1,6 +1,6 @@
 import * as covid19Service from '../services/covid19India.service';
 import HttpStatus from 'http-status-codes';
-import logger from '../config/logger';
+//import logger from '../config/logger';
 
 /**
  * Controller to get all covid19 data available

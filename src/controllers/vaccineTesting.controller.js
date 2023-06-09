@@ -1,6 +1,6 @@
 import * as vaccineTestService from "../services/vaccineTesting.service";
 import HttpStatus from 'http-status-codes';
-import logger from '../config/logger';
+//import logger from '../config/logger';
 
 /**
  * Controller to get all vaccine test data available

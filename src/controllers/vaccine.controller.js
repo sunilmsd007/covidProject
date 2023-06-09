@@ -1,5 +1,5 @@
 import HttpStatus from 'http-status-codes';
-import logger from '../config/logger';
+//import logger from '../config/logger';
 import * as vaccineService from '../services/vaccine.service';
 
 /**
