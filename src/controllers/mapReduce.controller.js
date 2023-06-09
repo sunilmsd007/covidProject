@@ -17,9 +17,9 @@ export const map = async (req, res, next) => {
             data: data,
             message: 'All data fetched successfully'
         })
-        logger.info("All data fetched successfully")
+       // logger.info("All data fetched successfully")
     } catch (error) {
-        logger.error(error)
+       // logger.error(error)
         res.status(HttpStatus.BAD_REQUEST).json({
           code: HttpStatus.BAD_REQUEST,
           message: `${error}`
@@ -36,9 +36,9 @@ export const reduce = async (req, res, next) => {
             data: data,
             message: 'All data fetched successfully'
         })
-        logger.info("All data fetched successfully")
+       // logger.info("All data fetched successfully")
     } catch (error) {
-        logger.error(error)
+      //  logger.error(error)
         res.status(HttpStatus.BAD_REQUEST).json({
           code: HttpStatus.BAD_REQUEST,
           message: `${error}`
@@ -55,9 +55,9 @@ export const mapReduceCheck = async (req, res, next) => {
             data: data,
             message: 'All data fetched successfully'
         })
-        logger.info("All data fetched successfully")
+       // logger.info("All data fetched successfully")
     } catch (error) {
-        logger.error(error)
+       // logger.error(error)
         res.status(HttpStatus.BAD_REQUEST).json({
           code: HttpStatus.BAD_REQUEST,
           message: `${error}`
@@ -74,9 +74,9 @@ export const getmapReduce = async (req, res, next) => {
             data: data,
             message: 'All data fetched successfully'
         })
-        logger.info("All data fetched successfully")
+        //logger.info("All data fetched successfully")
     } catch (error) {
-        logger.error(error)
+        //logger.error(error)
         res.status(HttpStatus.BAD_REQUEST).json({
           code: HttpStatus.BAD_REQUEST,
           message: `${error}`

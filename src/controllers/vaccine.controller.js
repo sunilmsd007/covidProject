@@ -16,9 +16,9 @@ export const getAllData = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -35,9 +35,9 @@ export const dosesPerMonth = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+   // logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -54,9 +54,9 @@ export const dosesInState = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -73,9 +73,9 @@ export const dosesForGender = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -92,9 +92,9 @@ export const individualVaccinesInState = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -111,9 +111,9 @@ export const dosageWithinDateRange = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -130,9 +130,9 @@ export const dosageWithinDateRangeForState = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+   // logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -149,9 +149,9 @@ export const firstAndSecondDose = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -168,9 +168,9 @@ export const documentsInRange = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -187,9 +187,9 @@ export const skipOptimization = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+   // logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -206,9 +206,9 @@ export const limitOptimization = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+   //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+   // logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -225,9 +225,9 @@ export const matchOptimization = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -244,9 +244,9 @@ export const addFields = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -263,9 +263,9 @@ export const lookup = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -282,9 +282,9 @@ export const unwind = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -301,9 +301,9 @@ export const redact = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -320,9 +320,9 @@ export const unionWith = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -339,9 +339,9 @@ export const unset = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+   // logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -358,9 +358,9 @@ export const sortByCount = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
@@ -377,9 +377,9 @@ export const out = async (req, res, next) => {
       data: data,
       message: 'All data fetched successfully'
     });
-    logger.info("All data fetched successfully")
+    //logger.info("All data fetched successfully")
   } catch (error) {
-    logger.error(error)
+    //logger.error(error)
     res.status(HttpStatus.BAD_REQUEST).json({
       code: HttpStatus.BAD_REQUEST,
       message: `${error}`
