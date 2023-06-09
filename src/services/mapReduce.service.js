@@ -78,7 +78,7 @@ export const mapReduceChek = async () => {
     }
 }
 
-//
+//getmapReduce
 export const getmapReduce = async () => {
     const data = await Vaccination.aggregate(
         [
